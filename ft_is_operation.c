@@ -1,35 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_isoperation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amagnan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/11 17:15:26 by amagnan           #+#    #+#             */
-/*   Updated: 2018/09/11 17:15:26 by amagnan          ###   ########.fr       */
+/*   Created: 2018/10/19 17:41:30 by amagnan           #+#    #+#             */
+/*   Updated: 2018/10/19 17:41:31 by amagnan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+int			ft_is_operation(char c)
 {
-	t_list		*new;
-	t_list		*list;
-
-	if (!lst)
-		return (NULL);
-	list = f(lst);
-	new = list;
-	while (lst->next)
-	{
-		lst = lst->next;
-		if (!(list->next = f(lst)))
-		{
-			free(list->next);
-			return (NULL);
-		}
-		list = list->next;
-	}
-	return (new);
+	if (c == '-' || c == '+' || c == '*'
+		|| c == '/' || c == '%')
+		return (1);
+	return (0);
 }
